@@ -16,6 +16,7 @@ const NavigationApp = () => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    
   };
 
 

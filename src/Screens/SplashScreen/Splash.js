@@ -2,11 +2,12 @@ import React,{useEffect} from 'react';
 import { StyleSheet, View, ImageBackground, Image } from 'react-native';
 import ImagePath from '../../Constable/ImagePath';
 import { scale } from '../../style/responsiveSize';
+import StatusBarComponent from '../../Compoment/StatusBarComponent';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('Onboarding');
+      navigation.replace('OTPscreen');
     }, 2000); 
 
 
@@ -15,6 +16,7 @@ const Splash = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <StatusBarComponent backgroundColor={'#FFFFFF4D'}/>
       <ImageBackground
         style={styles.backgroundImage}
         source={ImagePath.SplashBg}

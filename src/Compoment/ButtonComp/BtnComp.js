@@ -1,26 +1,28 @@
-import { StyleSheet, Text, View,TouchableOpacity, } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {scale} from '../../style/responsiveSize';
 
-const BtnComp = ({ title, onPress }) => (
-    <TouchableOpacity style={styles.loginBtn} onPress={onPress}>
-      <Text style={styles.loginText}>{title}</Text>
-    </TouchableOpacity>
-  );
+const BtnComp = ({title, onPress, style,textStyle}) => (
+  <TouchableOpacity style={[styles.loginBtn, style]} onPress={onPress}>
+    <Text style={[styles.loginText,textStyle]}>{title}</Text>
+  </TouchableOpacity>
+);
 
-export default BtnComp
+export default BtnComp;
 
 const styles = StyleSheet.create({
-    loginBtn: {
-        width: '80%',
-        backgroundColor: '#fb5b5a',
-        borderRadius: 25,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 40,
-        marginBottom: 10,
-      },
-      loginText: {
-        color: 'white',
-      },
-})
+  loginBtn: {
+    width: '80%',
+    backgroundColor: '#fb5b5a',
+    borderRadius: 10,
+    height: scale(50),
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  loginText: {
+    color: 'white',
+    fontSize:17
+  },
+});

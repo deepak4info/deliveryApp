@@ -1,9 +1,10 @@
-import { FlatList, StyleSheet, Text, View, TouchableOpacity, StatusBar,Button } from 'react-native'
+import { FlatList, StyleSheet, Text, View, TouchableOpacity, StatusBar,Button, TextInput } from 'react-native'
 import React, { useEffect, useRef ,useState} from 'react'
 import HeaderComp from '../../Compoment/HeaderComp/HeaderComp'
 import { moderateScale, scale } from '../../style/responsiveSize'
 import PickupDropLocationCard from '../../Compoment/LocationComp/PickupDropLocationCard'
 import { useNavigation } from '@react-navigation/native';
+import VehiclesList from '../../Compoment/VehiclesComp/VehiclesList'
 
 const Home = () => {
   const flatListRef = useRef(null);
@@ -23,6 +24,13 @@ const Home = () => {
 
   const navigation = useNavigation();
 
+  const SildesData = [
+    { id: 1, make: 'Toyota', model: 'Camry', year: 2020 },
+    { id: 2, make: 'Honda', model: 'Civic', year: 2019 },
+    { id: 3, make: 'Ford', model: 'F-150', year: 2021 },
+    // Add more vehicle data as needed
+  ];
+
   const handlePickupPress = () => {
     navigation.navigate('Search', { type: 'pickup' });
   };
@@ -41,14 +49,14 @@ const Home = () => {
 
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1,backgroundColor:'white' }}>
       <StatusBar barStyle={'default'} />
       <HeaderComp
         MainText={'Delivery App'}
         RightImage
         LeftImage
       />
-      <View style={{ flex: 1, backgroundColor: 'yellow' }}>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
         <FlatList
           data={[1, 1, 1, 1]}
 
@@ -78,7 +86,7 @@ const Home = () => {
 
                     <FlatList
                       ref={flatListRef}
-                      data={[1, 1, 1]}
+                      data={SildesData}
                       showsHorizontalScrollIndicator={false}
                       horizontal
                       automaticallyAdjustsScrollIndicatorInsets
@@ -100,7 +108,12 @@ const Home = () => {
                                 backgroundColor: 'coral',
                                 // marginHorizontal: 10
                               }}>
-
+                                    <Text style={{
+                                      fontSize: 16,
+                                      fontWeight: 'bold',
+                                      marginBottom: 5,
+                                      color:'white'
+                                    }}>{item.make} </Text>
 
                             </View>
                             }
@@ -115,7 +128,12 @@ const Home = () => {
                                 backgroundColor: 'green',
                                 // marginHorizontal: 10,
                               }}>
-
+     <Text style={{
+                                      fontSize: 16,
+                                      fontWeight: 'bold',
+                                      marginBottom: 5,
+                                      color:'white'
+                                    }}>{item.make} </Text>
 
                             </View>
                             }
@@ -130,19 +148,15 @@ const Home = () => {
                                 backgroundColor:"black",
                                 // marginHorizontal: 10
                               }}>
+     <Text style={{
+                                      fontSize: 16,
+                                      fontWeight: 'bold',
+                                      marginBottom: 5,
+                                      color:'white'
+                                    }}>{item.make} </Text>
 
-                              {/* <TouchableOpacity
-                                disabled={true}
-                                style={{
-                                  width: '80%',
-                                  height: '90%',
-                                  backgroundColor: 'blue',
-                                  borderRadius: 10,
-
-                                }}>
-                                <Text> </Text>
-                              </TouchableOpacity> */}
                             </View>
+
                             }
                           </View>
                         )
@@ -159,14 +173,22 @@ const Home = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     marginVertical: moderateScale(15),
-                    backgroundColor:'pink'
+                    // backgroundColor:'pink'
                   }}>
                     <View style={{flex:1, width:'90%', justifyContent:'center'}}> 
              <PickupDropLocationCard type="Pickup"  onPress={handlePickupPress} />
       <PickupDropLocationCard type="Drop"  onPress={handleDropPress} />
-      <View style={styles.addStopButtonContainer}>
-        <Button title="Add Stop" onPress={handleAddStop} />
-      </View>
+    
+    
+        <TouchableOpacity 
+        onPress={handleAddStop}
+        style={styles.addStopButtonContainer}
+        > 
+          <Text style={{ fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,}}> + Add Stop</Text>
+        </TouchableOpacity>
+  
 
       {/* Display Stop Locations */}
       {stopLocations.map((location, index) => (
@@ -184,15 +206,8 @@ const Home = () => {
                     alignItems: 'center',
                     marginVertical: moderateScale(15),
                   }}>
-                  <TouchableOpacity
-                    disabled={true}
-                    style={{
-                      width: '90%',
-                      height: '90%',
-                      backgroundColor: 'orange',
-                      borderRadius: 10,
-
-                    }}></TouchableOpacity>
+                    <VehiclesList/>
+                  
                 </View>}
               </View>
 
@@ -206,4 +221,14 @@ const Home = () => {
 
 export default Home
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  addStopButtonContainer:{
+    borderWidth: 1,
+    borderColor: '#ddd',
+    alignItems:'center',
+    borderRadius: 8,
+    width:'100%',
+    justifyContent:'center',
+    paddingVertical:10,
+  }
+})

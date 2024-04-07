@@ -26,6 +26,8 @@ const LoginScreen = ({navigation}) => {
     console.log('Username:', username);
     console.log('Password:', password);
 
+    navigation.replace('Home')
+
     // try {
     //   // Make a POST request to your login API endpoint
     //   const response = await axios.post('YOUR_API_LOGIN_ENDPOINT', {

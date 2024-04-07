@@ -5,7 +5,7 @@ import MainStack from './MainStack';
 import AuthStack from './AuthStack';
 
 const NavigationApp = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogin = () => {
     setIsAuthenticated(true);

@@ -14,7 +14,7 @@ const PickupDropLocationCard = ({ type, location, onPress }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    padding: 20,
+    padding: 10,
     borderRadius: 8,
     marginBottom: 10,
     borderWidth: 1,

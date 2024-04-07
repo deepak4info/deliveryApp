@@ -8,6 +8,7 @@ import ForgotScreen from '../Screens/ForgotPasswordScreen/ForgotScreen';
 import Register from '../Screens/RegistiorScreen/RegisterScreen.js/Register';
 import OTPscreen from '../Screens/OTPScreen/OTPscreen';
 import StepOne from '../Screens/StepScreen/StepOne';
+import Home from '../Screens/HomeScreen/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +61,7 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
+   
     </Stack.Navigator>
   );
 };

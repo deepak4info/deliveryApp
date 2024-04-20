@@ -9,6 +9,7 @@ import Register from '../Screens/RegistiorScreen/RegisterScreen.js/Register';
 import OTPscreen from '../Screens/OTPScreen/OTPscreen';
 import StepOne from '../Screens/StepScreen/StepOne';
 import Home from '../Screens/HomeScreen/Home';
+import DrawerNavigator from './Drawer/DrawerNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,7 +62,7 @@ const AuthStack = () => {
           headerShown: false,
         }}
       />
-         <Stack.Screen name="Home" component={Home} 
+         <Stack.Screen name="Drawer" component={DrawerNavigator} 
         options={{headerShown: false}}
         />
    

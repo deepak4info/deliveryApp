@@ -225,11 +225,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
+    color:colorStyle.blackColor
   },
   titleText: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20, // Add consistent margin bottom
+    color:colorStyle.blackColor
   },
 });
 

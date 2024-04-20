@@ -26,7 +26,7 @@ const LoginScreen = ({navigation}) => {
     console.log('Username:', username);
     console.log('Password:', password);
 
-    navigation.replace('Home')
+    navigation.replace('Drawer')
 
     // try {
     //   // Make a POST request to your login API endpoint
@@ -61,7 +61,7 @@ const LoginScreen = ({navigation}) => {
          {/* <StatusBar backgroundColor={colorStyle.themeColor} /> */}
          <StatusBarComponent/>
       <Image source={ImagePath.LoginScreen} style={styles.image} />
-     <LeftComponent/>
+     {/* <LeftComponent/> */}
       <InputField
         placeholder="Mobile"
         value={username}

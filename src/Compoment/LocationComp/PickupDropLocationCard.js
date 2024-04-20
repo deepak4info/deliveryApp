@@ -1,6 +1,7 @@
 // src/PickupDropLocationCard.js
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import colorStyle from '../../style/colorStyle';
 
 const PickupDropLocationCard = ({ type, location, onPress }) => {
   return (
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
+    color:colorStyle.blackColor
   },
   location: {
     fontSize: 14,

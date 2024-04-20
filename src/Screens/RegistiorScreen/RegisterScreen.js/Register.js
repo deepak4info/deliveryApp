@@ -84,6 +84,9 @@ const Register = ({navigation}) => {
           {vehicles.map((vehicle, index) => (
             <Picker.Item
               key={index}
+              style={{
+                color:colorStyle.blackColor
+              }}
               label={vehicle.label}
               value={vehicle.value}
             />
@@ -101,6 +104,9 @@ const Register = ({navigation}) => {
           {vehicles.map((vehicle, index) => (
             <Picker.Item
               key={index}
+              style={{
+                color:colorStyle.blackColor
+              }}
               label={vehicle.label}
               value={vehicle.value}
             />
@@ -118,7 +124,9 @@ const Register = ({navigation}) => {
         onChangeText={text => setPassword(text)}
       /> */}
 
-      <Text>We'll text you to confirm your number</Text>
+      <Text style={{
+        color:colorStyle.blackColor
+      }}>We'll text you to confirm your number</Text>
       <BtnComp
         title="Get Started"
         onPress={handleGetStarted}

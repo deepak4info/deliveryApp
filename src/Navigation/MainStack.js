@@ -1,7 +1,8 @@
 
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from '../Screens/HomeScreen/Home';
+import DrawerNavigator from './Drawer/DrawerNavigator';
+import Search from '../Screens/HomeScreen/Search';
 
 
 const Stack = createNativeStackNavigator();
@@ -9,9 +10,10 @@ const Stack = createNativeStackNavigator();
 const MainStack = () => {
   return (
     <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} 
+        <Stack.Screen name="Drawer" component={DrawerNavigator} 
         options={{headerShown: false}}
         />
+        <Stack.Screen name='Search' component={Search}/>
       </Stack.Navigator>
   )
 }

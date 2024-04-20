@@ -1,11 +1,10 @@
-
-import React from 'react'
-import NavigationApp from './src/Navigation/NavigationApp'
+import React from 'react';
+import NavigationApp from './src/Navigation/NavigationApp';
 
 const App = () => {
   return <NavigationApp />;
 
-  // main branch
-}
+  // Deepak checking
+};
 
-export default App
+export default App;

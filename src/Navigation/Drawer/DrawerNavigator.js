@@ -5,7 +5,7 @@ import CustomDrawerContent from './CustomDrawerContent/CustomDrawerContent';
 import BottomNav from '../BottomNav/BottomNav';
 
 const Drawer = createDrawerNavigator();
-
+//test
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator

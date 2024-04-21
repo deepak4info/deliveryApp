@@ -40,6 +40,7 @@ const slides = [
 ];
 
 const StepsScreen = ({navigation}) => {
+  
   const [currentStep, setCurrentStep] = useState(0);
   const flatListRef = useRef(null);
 

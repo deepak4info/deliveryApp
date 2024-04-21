@@ -26,7 +26,11 @@ const LoginScreen = ({navigation}) => {
     console.log('Username:', username);
     console.log('Password:', password);
 
+<<<<<<< Updated upstream
     navigation.replace('Drawer')
+=======
+    navigation.replace('Main');
+>>>>>>> Stashed changes
 
     // try {
     //   // Make a POST request to your login API endpoint
@@ -58,10 +62,14 @@ const LoginScreen = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
-         {/* <StatusBar backgroundColor={colorStyle.themeColor} /> */}
-         <StatusBarComponent/>
+      {/* <StatusBar backgroundColor={colorStyle.themeColor} /> */}
+      <StatusBarComponent />
       <Image source={ImagePath.LoginScreen} style={styles.image} />
+<<<<<<< Updated upstream
      {/* <LeftComponent/> */}
+=======
+      <LeftComponent />
+>>>>>>> Stashed changes
       <InputField
         placeholder="Mobile"
         value={username}

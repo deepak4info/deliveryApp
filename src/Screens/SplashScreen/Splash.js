@@ -17,15 +17,18 @@ const Splash = ({navigation}) => {
   return (
     <View style={styles.container}>
       <StatusBarComponent backgroundColor={'#FFFFFF4D'}/>
+      
       <ImageBackground
         style={styles.backgroundImage}
         source={ImagePath.SplashBg}
         resizeMode='cover'>
+
         <Image
           source={ImagePath.SplashLogo}
           style={styles.splashLogo}
           resizeMode='contain'
         />
+
       </ImageBackground>
     </View>
   );
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
   },
   splashLogo: {
     width: '100%',
-    height: scale(150), // Assuming you're using a responsive size utility function
+    height: scale(150), 
   },
 });
 

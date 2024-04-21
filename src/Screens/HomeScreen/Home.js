@@ -5,19 +5,27 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
+<<<<<<< Updated upstream
   Button,
+=======
+>>>>>>> Stashed changes
   TextInput,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import HeaderComp from '../../Compoment/HeaderComp/HeaderComp';
 import {moderateScale, scale} from '../../style/responsiveSize';
 import PickupDropLocationCard from '../../Compoment/LocationComp/PickupDropLocationCard';
+<<<<<<< Updated upstream
 import {useNavigation} from '@react-navigation/native';
 import VehiclesList from '../../Compoment/VehiclesComp/VehiclesList';
 import colorStyle from '../../style/colorStyle';
 import GoogleMapScreen from '../GoogleMap';
+=======
+// import {useNavigation} from '@react-navigation/native';
+import VehiclesList from '../../Compoment/VehiclesComp/VehiclesList';
+>>>>>>> Stashed changes
 
-const Home = () => {
+const Home = ({navigation}) => {
   const flatListRef = useRef(null);
   const [stopLocations, setStopLocations] = useState([]);
 
@@ -31,7 +39,11 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
+<<<<<<< Updated upstream
   const navigation = useNavigation();
+=======
+  // const navigation = useNavigation();
+>>>>>>> Stashed changes
 
   const SildesData = [
     {id: 1, make: 'Toyota', model: 'Camry', year: 2020},
@@ -54,14 +66,18 @@ const Home = () => {
   const addStopLocation = location => {
     setStopLocations([...stopLocations, location]);
   };
+<<<<<<< Updated upstream
   const handleRightPress = () => {
     // Logic for right image press
     console.log('Right image pressed!');
   };
+=======
+>>>>>>> Stashed changes
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <StatusBar barStyle={'default'} />
+<<<<<<< Updated upstream
       <HeaderComp
         MainText={'Delivery App'}
         RightImage
@@ -70,6 +86,9 @@ const Home = () => {
           navigation.openDrawer();
         }}
       />
+=======
+      <HeaderComp MainText={'Delivery App'} RightImage LeftImage />
+>>>>>>> Stashed changes
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <FlatList
           data={[1, 1, 1, 1]}
@@ -195,7 +214,10 @@ const Home = () => {
                       marginVertical: moderateScale(15),
                       // backgroundColor:'pink'
                     }}>
+<<<<<<< Updated upstream
                     <GoogleMapScreen />
+=======
+>>>>>>> Stashed changes
                     <View
                       style={{flex: 1, width: '90%', justifyContent: 'center'}}>
                       <PickupDropLocationCard
@@ -209,12 +231,19 @@ const Home = () => {
 
                       <TouchableOpacity
                         onPress={handleAddStop}
+<<<<<<< Updated upstream
                         style={styles.addStopButtonContainer}>
+=======
+                        style={styles.addStopontainer}>
+>>>>>>> Stashed changes
                         <Text
                           style={{
                             fontSize: 16,
                             fontWeight: 'bold',
+<<<<<<< Updated upstream
                             color: colorStyle.blackColor,
+=======
+>>>>>>> Stashed changes
                             marginBottom: 5,
                           }}>
                           {' '}
@@ -242,6 +271,7 @@ const Home = () => {
                       height: scale(250),
                       justifyContent: 'center',
                       alignItems: 'center',
+<<<<<<< Updated upstream
                       marginVertical: moderateScale(35),
                     }}>
                     <Text
@@ -252,6 +282,10 @@ const Home = () => {
                       Available Vehicles
                     </Text>
 
+=======
+                      marginVertical: moderateScale(15),
+                    }}>
+>>>>>>> Stashed changes
                     <VehiclesList />
                   </View>
                 )}
@@ -267,7 +301,11 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+<<<<<<< Updated upstream
   addStopButtonContainer: {
+=======
+  addStopontainer: {
+>>>>>>> Stashed changes
     borderWidth: 1,
     borderColor: '#ddd',
     alignItems: 'center',

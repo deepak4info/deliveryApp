@@ -11,6 +11,7 @@ import StepOne from '../Screens/StepScreen/StepOne';
 import Home from '../Screens/HomeScreen/Home';
 import DrawerNavigator from './Drawer/DrawerNavigator';
 import GoogleMapScreen from '../Screens/GoogleMap';
+import OrderStatus from '../Screens/OrderTrack/OrderStatus';
 
 const Stack = createNativeStackNavigator();
 
@@ -66,7 +67,8 @@ const AuthStack = () => {
          <Stack.Screen name="Drawer" component={DrawerNavigator} 
         options={{headerShown: false}}
         />
-           <Stack.Screen name='GoogleMapScreen' component={GoogleMapScreen}/>
+        {/* <Stack.Screen name='Order Status' component={OrderStatus}/> */}
+           {/* <Stack.Screen name='GoogleMapScreen' component={GoogleMapScreen}/> */}
 
     </Stack.Navigator>
   );

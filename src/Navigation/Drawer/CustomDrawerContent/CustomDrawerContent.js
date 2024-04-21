@@ -13,7 +13,7 @@ const menuItems = [
   {
     name: 'My Orders',
     icon: require('../../../assets/images/order.png'),
-    route: 'My Orders',
+    route: 'Order Status',
   },
   {
     name: 'My Transactions',

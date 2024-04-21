@@ -1,24 +1,23 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Home from '../../Screens/HomeScreen/Home';
+import GoogleMapScreen from '../../Screens/GoogleMap';
 import OrderStatus from '../../Screens/OrderTrack/OrderStatus';
+import Home from '../../Screens/HomeScreen/Home';
+import ProfileScreen from '../../Screens/Profile/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
-const BottomNav = () => {
+const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
-      <Tab.Screen
-        name="OrderStatus"
-        component={OrderStatus}
-        options={{headerShown: false}}
-      />
+    <Tab.Navigator screenOptions={{
+        headerShown:false
+    }}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Map" component={GoogleMapScreen} /> 
+      <Tab.Screen name="Order Status" component={OrderStatus} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };
 
-export default BottomNav;
-
-const styles = StyleSheet.create({});
+export default BottomTabNavigator;

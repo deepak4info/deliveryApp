@@ -1,11 +1,13 @@
-
-import React from 'react'
-import NavigationApp from './src/Navigation/NavigationApp'
+import React from 'react';
+import NavigationApp from './src/Navigation/NavigationApp';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const App = () => {
-  return <NavigationApp />;
+  return (
+    <GestureHandlerRootView>
+      <NavigationApp />
+    </GestureHandlerRootView>
+  );
+};
 
-  // main branch
-}
-
-export default App
+export default App;

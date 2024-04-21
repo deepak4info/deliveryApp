@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useCallback} from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  StatusBar,
 } from 'react-native';
 
 import ImagePath from '../../Constable/ImagePath';
@@ -42,37 +43,33 @@ const StepsScreen = ({navigation}) => {
   const [currentStep, setCurrentStep] = useState(0);
   const flatListRef = useRef(null);
 
-  const handleNextStep = () => {
+  const handleNextStep = useCallback(() => {
     if (currentStep === slides.length - 1) {
       // Handle navigation or action for last step
     } else {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(prevStep => prevStep + 1);
       flatListRef.current.scrollToIndex({index: currentStep + 1});
     }
-  };
+  }, [currentStep]);
 
-  const handlePreviousStep = () => {
-    setCurrentStep(currentStep === 0 ? slides.length - 1 : currentStep - 1);
+  const handlePreviousStep = useCallback(() => {
+    setCurrentStep(prevStep =>
+      prevStep === 0 ? slides.length - 1 : prevStep - 1,
+    );
     flatListRef.current.scrollToIndex({
       index: currentStep === 0 ? slides.length - 1 : currentStep - 1,
     });
-  };
+  }, [currentStep]);
 
-  const handleSkip = () => {
+  const handleSkip = useCallback(() => {
     // Navigate to login screen
     navigation.replace('Login');
-  };
+  }, [navigation]);
 
-  const handleDone = () => {
+  const handleDone = useCallback(() => {
     // Handle action for last step (e.g., replace to home screen)
     navigation.replace('Login');
-  };
-
-  const renderDot = ({index}) => {
-    return (
-      <View style={[styles.dot, index === currentStep && styles.activeDot]} />
-    );
-  };
+  }, [navigation]);
 
   const renderSlide = ({item}) => {
     return (
@@ -84,21 +81,32 @@ const StepsScreen = ({navigation}) => {
         <Image source={item.image} style={styles.image} />
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.text}>{item.text}</Text>
-        <View style={styles.dotsContainer}>
-          {slides.map((_, index) => renderDot({index}))}
-        </View>
       </View>
     );
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: slides[currentStep].backgroundColor},
+      ]}>
+        <StatusBar translucent backgroundColor={slides[currentStep].backgroundColor}/>
+      <View style={styles.dotsContainer}>
+        {slides.map((_, index) => (
+          <View
+            key={index}
+            style={[styles.dot, index === currentStep && styles.activeDot]}
+          />
+        ))}
+      </View>
       <FlatList
         ref={flatListRef}
         data={slides}
         renderItem={renderSlide}
         horizontal
         pagingEnabled
+        contentContainerStyle={{backgroundColor:slides[currentStep].backgroundColor}}
         showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.key.toString()}
         onScroll={event => {
@@ -109,57 +117,25 @@ const StepsScreen = ({navigation}) => {
           setCurrentStep(slideIndex);
         }}
       />
-      <View style={styles.buttonContainer}>
-        {currentStep === 0 ? (
-          <TouchableOpacity
-            onPress={handleSkip}
-            style={{
-              width: '50%',
-              padding: 20,
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#D9D9D9',
-            }}>
-            <Text style={styles.skipButton}>Skip</Text>
+
+      <View style={[styles.buttonContainer,{backgroundColor:slides[currentStep].backgroundColor}]}>
+        {/* {currentStep === 0 ? ( */}
+          <TouchableOpacity onPress={handleSkip} style={styles.button}>
+            <Text style={styles.buttonText}>Skip</Text>
           </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={handlePreviousStep}
-            style={{
-              width: '50%',
-              padding: 20,
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#D9D9D9',
-            }}>
-            <Text style={styles.skipButton}>Previous</Text>
-          </TouchableOpacity>
-        )}
+       
         {currentStep !== slides.length - 1 && (
           <TouchableOpacity
             onPress={handleNextStep}
-            style={{
-              width: '50%',
-              padding: 20,
-              alignItems: 'center',
-              justifyContent: 'center',
-
-              backgroundColor: colorStyle.themeColor,
-            }}>
-            <Text style={[styles.skipButton, {color: '#ffff'}]}>Next</Text>
+            style={[styles.button, {backgroundColor: colorStyle.themeColor}]}>
+            <Text style={[styles.buttonText, {color: '#ffff'}]}>Next</Text>
           </TouchableOpacity>
         )}
         {currentStep === slides.length - 1 && (
           <TouchableOpacity
             onPress={handleDone}
-            style={{
-              width: '50%',
-              padding: 20,
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: colorStyle.themeColor,
-            }}>
-            <Text style={[styles.skipButton, {color: '#ffff'}]}>Done</Text>
+            style={[styles.button, ]}>
+            <Text style={[styles.buttonText, {color: '#ffff'}]}>Done</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -172,6 +148,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   slideContainer: {
+    flex:1,
     width: Dimensions.get('window').width, // Set slide width to screen width
     justifyContent: 'center',
     alignItems: 'center',
@@ -192,14 +169,19 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonContainer: {
-    // borderWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // marginBottom:.2
-    // paddingHorizontal: 20,
-    // margin: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
-  skipButton: {
+  button: {
+    // width: '30%',
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#D9D9D9',
+  },
+  buttonText: {
     fontSize: 16,
     color: '#525252',
   },
@@ -207,26 +189,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 40,
+    gap:10
+    // borderWidth:1
+    // marginBottom: 20, // Adjust spacing as needed
   },
   dot: {
-    width: 10,
-    height: 10,
+    flex: 1,
+    // width: 100,
+    height: 4,
     borderRadius: 5,
     backgroundColor: 'gray',
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
+   
   },
   activeDot: {
     backgroundColor: 'blue',
-  },
-  dotsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    bottom: 20, // Adjust this value as needed
-    left: 0,
-    right: 0,
   },
 });
 

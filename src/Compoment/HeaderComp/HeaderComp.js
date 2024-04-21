@@ -9,7 +9,7 @@ import {
 import ImagePath from '../../Constable/ImagePath';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const HeaderComp = ({MainText, LeftImage, RightImage, onPress = () => {}}) => {
+const HeaderComp = ({MainText, LeftImage, RightImage, onPress = () => {}},onPressRight = () => {}) => {
   return (
     <View style={styles.Container}>
       {LeftImage ? (
@@ -19,7 +19,9 @@ const HeaderComp = ({MainText, LeftImage, RightImage, onPress = () => {}}) => {
       ) : null}
       <Text style={styles.MainText}>{MainText}</Text>
       {RightImage ? (
-        <Image source={ImagePath.AlertIcon} style={{width: 30, height: 30}} />
+       <TouchableOpacity onPress={onPress}>
+         <Image source={ImagePath.AlertIcon} style={{width: 30, height: 30}}  />
+       </TouchableOpacity>
       ) : null}
     </View>
   );

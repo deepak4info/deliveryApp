@@ -1,21 +1,21 @@
-
-import React from 'react'
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import React from 'react';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import Home from '../../Screens/HomeScreen/Home';
 import CustomDrawerContent from './CustomDrawerContent/CustomDrawerContent';
-
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props} />}>
-        <Drawer.Screen name="Home" component={Home} 
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawerContent {...props} />}>
+      <Drawer.Screen
+        name="Home"
+        component={Home}
         options={{headerShown: false}}
-        />
-      </Drawer.Navigator>
-  )
-}
+      />
+    </Drawer.Navigator>
+  );
+};
 
-export default DrawerNavigator
-
+export default DrawerNavigator;

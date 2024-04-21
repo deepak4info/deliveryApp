@@ -15,6 +15,7 @@ import PickupDropLocationCard from '../../Compoment/LocationComp/PickupDropLocat
 import {useNavigation} from '@react-navigation/native';
 import VehiclesList from '../../Compoment/VehiclesComp/VehiclesList';
 import colorStyle from '../../style/colorStyle';
+import GoogleMapScreen from '../GoogleMap';
 
 const Home = () => {
   const flatListRef = useRef(null);
@@ -52,6 +53,10 @@ const Home = () => {
 
   const addStopLocation = location => {
     setStopLocations([...stopLocations, location]);
+  };
+  const handleRightPress = () => {
+    // Logic for right image press
+    console.log('Right image pressed!');
   };
 
   return (
@@ -190,6 +195,7 @@ const Home = () => {
                       marginVertical: moderateScale(15),
                       // backgroundColor:'pink'
                     }}>
+                    <GoogleMapScreen />
                     <View
                       style={{flex: 1, width: '90%', justifyContent: 'center'}}>
                       <PickupDropLocationCard
@@ -238,15 +244,14 @@ const Home = () => {
                       alignItems: 'center',
                       marginVertical: moderateScale(35),
                     }}>
-                   
-                      <Text
-                        style={{
-                          color: colorStyle.blackColor,
-                          textAlign: 'left',
-                        }}>
-                        Available Vehicles
-                      </Text>
-                   
+                    <Text
+                      style={{
+                        color: colorStyle.blackColor,
+                        textAlign: 'left',
+                      }}>
+                      Available Vehicles
+                    </Text>
+
                     <VehiclesList />
                   </View>
                 )}

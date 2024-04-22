@@ -6,6 +6,7 @@ const App = () => {
   return (
     <GestureHandlerRootView>
       <NavigationApp />
+      {/* <Text> Deepak code </Text> */}
     </GestureHandlerRootView>
   );
 };

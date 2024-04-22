@@ -195,7 +195,7 @@ const Home = () => {
                       marginVertical: moderateScale(15),
                       // backgroundColor:'pink'
                     }}>
-                    <GoogleMapScreen />
+                    {/* <GoogleMapScreen /> */}
                     <View
                       style={{flex: 1, width: '90%', justifyContent: 'center'}}>
                       <PickupDropLocationCard

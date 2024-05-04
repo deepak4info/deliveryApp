@@ -91,7 +91,10 @@ const StepsScreen = ({navigation}) => {
         styles.container,
         {backgroundColor: slides[currentStep].backgroundColor},
       ]}>
-        <StatusBar translucent backgroundColor={slides[currentStep].backgroundColor}/>
+      <StatusBar
+        translucent
+        backgroundColor={slides[currentStep].backgroundColor}
+      />
       <View style={styles.dotsContainer}>
         {slides.map((_, index) => (
           <View
@@ -106,7 +109,9 @@ const StepsScreen = ({navigation}) => {
         renderItem={renderSlide}
         horizontal
         pagingEnabled
-        contentContainerStyle={{backgroundColor:slides[currentStep].backgroundColor}}
+        contentContainerStyle={{
+          backgroundColor: slides[currentStep].backgroundColor,
+        }}
         showsHorizontalScrollIndicator={false}
         keyExtractor={item => item.key.toString()}
         onScroll={event => {
@@ -118,12 +123,16 @@ const StepsScreen = ({navigation}) => {
         }}
       />
 
-      <View style={[styles.buttonContainer,{backgroundColor:slides[currentStep].backgroundColor}]}>
+      <View
+        style={[
+          styles.buttonContainer,
+          {backgroundColor: slides[currentStep].backgroundColor},
+        ]}>
         {/* {currentStep === 0 ? ( */}
-          <TouchableOpacity onPress={handleSkip} style={styles.button}>
-            <Text style={styles.buttonText}>Skip</Text>
-          </TouchableOpacity>
-       
+        <TouchableOpacity onPress={handleSkip} style={styles.button}>
+          <Text style={styles.buttonText}>Skip</Text>
+        </TouchableOpacity>
+
         {currentStep !== slides.length - 1 && (
           <TouchableOpacity
             onPress={handleNextStep}
@@ -132,9 +141,7 @@ const StepsScreen = ({navigation}) => {
           </TouchableOpacity>
         )}
         {currentStep === slides.length - 1 && (
-          <TouchableOpacity
-            onPress={handleDone}
-            style={[styles.button, ]}>
+          <TouchableOpacity onPress={handleDone} style={[styles.button]}>
             <Text style={[styles.buttonText, {color: '#ffff'}]}>Done</Text>
           </TouchableOpacity>
         )}
@@ -148,7 +155,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   slideContainer: {
-    flex:1,
+    flex: 1,
     width: Dimensions.get('window').width, // Set slide width to screen width
     justifyContent: 'center',
     alignItems: 'center',
@@ -190,7 +197,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 40,
-    gap:10
+    gap: 10,
     // borderWidth:1
     // marginBottom: 20, // Adjust spacing as needed
   },
@@ -201,7 +208,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'gray',
     // marginHorizontal: 5,
-   
   },
   activeDot: {
     backgroundColor: 'blue',

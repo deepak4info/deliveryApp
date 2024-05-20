@@ -7,7 +7,7 @@ import StatusBarComponent from '../../Compoment/StatusBarComponent';
 const Splash = ({navigation}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('OTPscreen');
+      navigation.replace('Onboarding');
     }, 2000); 
 
 

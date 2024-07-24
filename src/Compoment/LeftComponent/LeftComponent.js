@@ -7,7 +7,7 @@ import StatusBarComponent from '../StatusBarComponent'
 const LeftComponent = ({onPress}) => {
   return (
     <View style={styles.midContainer}>
-        <StatusBarComponent/>
+        {/* <StatusBarComponent/> */}
     <TouchableHighlight onPress={onPress}
       style={{
         backgroundColor: '#fafafa',

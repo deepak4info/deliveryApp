@@ -10,6 +10,8 @@ export default {
  ArrowUp:require('../assets/images/Arrowup.png'),
  ArrowLeft:require('../assets/images/ArrowLeft.png'),
 LoginScreen: require('../assets/images/login.png'),
+Truck:require('../assets/svg/Truck.png'),
+T1:require('../assets/svg/t1.png'),
 ForgotPassword: require('../assets/images/Forgotpassword.png'),
 Step4Screen:require('../assets/images/step4screen.png'),
 VideoScreen:require('../assets/images/youtube.png'),

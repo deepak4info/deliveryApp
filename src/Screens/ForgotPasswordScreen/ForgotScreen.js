@@ -8,16 +8,18 @@ import colorStyle from '../../style/colorStyle';
 import LeftComponent from '../../Compoment/LeftComponent/LeftComponent';
 import {scale} from '../../style/responsiveSize';
 import fontFamily from '../../style/fontFamily';
+import { useNavigation } from '@react-navigation/native';
 
-const ForgotScreen = ({navigation}) => {
+const ForgotScreen = ({}) => {
+  const navigation =useNavigation();
   return (
     <View style={styles.container}>
-      <StatusBarComponent />
+      {/* <StatusBarComponent  backgroundColor={colorStyle.bgColor}/> */}
       <LeftComponent onPress={()=>navigation.goBack()}/>
       <StatusBar
         translucent
-        barStyle={'dark-content'}
-        backgroundColor={colorStyle.whiteColor}
+        barStyle={'light-content'}
+        backgroundColor={colorStyle.bgColor}
       />
       <View
         style={{
@@ -32,6 +34,7 @@ const ForgotScreen = ({navigation}) => {
             marginBottom: 20,
             fontSize: 18,
             fontWeight: '300',
+            color:colorStyle.whiteColor
           }}>
           You can reset your password here.
         </Text>
@@ -39,9 +42,10 @@ const ForgotScreen = ({navigation}) => {
           placeholder="Mobile"
           // onChangeText={text => setUsername(text)}
           keyboardType={'number-pad'}
+          
         />
         <BtnComp
-          onPress={() => navigation.navigate('OTPscreen')}
+          onPress={() =>navigation.navigate("OTPscreen") }
           title="Reset Password"
           textStyle={styles.btnText1}
           style={[styles.button]}
@@ -57,7 +61,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20,
-    backgroundColor: '#fff',
+    backgroundColor: colorStyle.bgColor,
     // alignItems: 'center',
     justifyContent: 'center',
   },
@@ -65,6 +69,7 @@ const styles = StyleSheet.create({
     width: 118,
     height: 118,
     // top: 83,
+    tintColor:'white',
     marginTop: scale(70), // There is no 'gap' property in React Native, using marginBottom instead
     // opacity: 0, // This sets the initial opacity of the image to 0
   },
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    color:colorStyle.blackColor,
+    color:colorStyle.whiteColor,
     fontWeight: '500',
   },
 });

@@ -13,7 +13,7 @@ export default BtnComp;
 const styles = StyleSheet.create({
   loginBtn: {
     width: '80%',
-    backgroundColor: '#fb5b5a',
+    backgroundColor: '#FFBC07',
     borderRadius: 10,
     height: scale(50),
     alignItems: 'center',
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   loginText: {
-    color: 'white',
+    color: 'black',
     fontSize:17
   },
 });

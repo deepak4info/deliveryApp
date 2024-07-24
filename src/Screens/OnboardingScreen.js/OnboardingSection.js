@@ -4,19 +4,29 @@ import { View, StyleSheet, Image, Text } from 'react-native';
 
 const OnboardingSection = ({ imageSource, top, left, text1, text2, text3, currentIndex }) => {
     const getImageDimensions = () => {
-        if (currentIndex === 1) return { width: 251, height: 250 };
+        if (currentIndex === 1) return { width: 251, height: 250 , };
         if (currentIndex === 2) return { width: 193, height: 112 };
         return { width: 235.37, height: 266 };
       };
     
       const { width, height } = getImageDimensions();
+      const imagePosition = {
+        position: 'absolute',
+        top: top, // Use the top prop here
+        left: left,
+      };
+      const textContainerPosition = {
+        position: 'absolute',
+        top: top + height + -130, // Adjust the top position to place it below the image
+        left: left - 130, // Adjust left position as needed
+    };
   return (
-    <View style={[styles.imageOverlay, { top, left }]}>
+    <View style={[styles.imageOverlay, imagePosition]}>
       <Image
         source={imageSource}
-        style={[styles.overlayImage, { width, height}]}
+        style={[styles.overlayImage, { width , height,}]}
       />
-      <View style={styles.textContainer}>
+      <View style={[styles.textContainer,textContainerPosition]}>
         <Text style={styles.requestText}>{text1}</Text>
         <Text style={styles.rideText}>{text2}</Text>
         <Text style={styles.scheduleText}>{text3}</Text>
@@ -27,10 +37,11 @@ const OnboardingSection = ({ imageSource, top, left, text1, text2, text3, curren
 
 const styles = StyleSheet.create({
   imageOverlay: {
-    position: 'absolute',
+    // position: 'absolute',
   },
   overlayImage: {
-    height: 266,
+    // height: 266,
+    
   },
   textContainer: {
     width: 180,

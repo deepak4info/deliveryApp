@@ -5,20 +5,16 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  TouchableHighlight,
-  TextInput,
-  StatusBar,
   Alert,
+  FlatList,
+  StatusBar,
 } from 'react-native';
 import BtnComp from '../../Compoment/ButtonComp/BtnComp';
 import InputField from '../../Compoment/InputFieldComp/InputField';
 import ImagePath from '../../Constable/ImagePath';
-import {scale} from '../../style/responsiveSize';
 import colorStyle from '../../style/colorStyle';
-import LeftComponent from '../../Compoment/LeftComponent/LeftComponent';
 import StatusBarComponent from '../../Compoment/StatusBarComponent';
-import axios from 'axios';
-import Api, {login} from '../../utill/Api';
+import {login} from '../../utill/Api';
 import {setItem, getItem} from '../../utill/DataStore/LocalDataStore';
 
 const LoginScreen = ({navigation}) => {
@@ -51,38 +47,55 @@ const LoginScreen = ({navigation}) => {
     console.log('Going to OTP Page');
   };
   return (
-    <View style={styles.container}>
-      <StatusBarComponent />
-      <Image source={ImagePath.LoginScreen} style={styles.image} />
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#3b454c',
+      }}>
+      <StatusBar  backgroundColor={colorStyle.bgColor}/>
+      <FlatList
+        data={[1]}
+        renderItem={(index, item) => {
+          return (
+            <View style={styles.container}>
+              {/* <StatusBarComponent /> */}
+              <Text style={styles.text}>
+                Sign <Text style={styles.highlightText}>in</Text>
+              </Text>
+              <Image source={ImagePath.Truck} style={styles.image} />
 
-      <InputField
-        placeholder="Mobile"
-        value={username}
-        onChangeText={text => setUsername(text)}
-      />
-      <InputField
-        placeholder="Password"
-        value={password}
-        onChangeText={text => setPassword(text)}
-        secureTextEntry
-      />
-      <View style={styles.passwordContainer}>
-        <TouchableOpacity
-          style={styles.forgotPasswordLink}
-          onPress={handleForgot}>
-          <Text style={styles.signupText}>Forgot Password?</Text>
-        </TouchableOpacity>
-      </View>
-      <BtnComp
-        title="LOGIN"
-        onPress={handleLogin}
-        textStyle={styles.btnText1}
-      />
-      <BtnComp
-        title="REGISTER"
-        onPress={handleRegister}
-        style={styles.customBtn}
-        textStyle={styles.btnText}
+              <InputField
+                placeholder="Mobile"
+                value={username}
+                onChangeText={text => setUsername(text)}
+              />
+              <InputField
+                placeholder="Password"
+                value={password}
+                onChangeText={text => setPassword(text)}
+                secureTextEntry
+              />
+              <View style={styles.passwordContainer}>
+                <TouchableOpacity
+                  style={styles.forgotPasswordLink}
+                  onPress={handleForgot}>
+                  <Text style={styles.signupText}>Forgot Password?</Text>
+                </TouchableOpacity>
+              </View>
+              <BtnComp
+                title="LOGIN"
+                onPress={handleLogin}
+                textStyle={styles.btnText1}
+              />
+              <BtnComp
+                title="REGISTER"
+                onPress={handleRegister}
+                style={styles.customBtn}
+                textStyle={styles.btnText}
+              />
+            </View>
+          );
+        }}
       />
     </View>
   );
@@ -91,15 +104,25 @@ const LoginScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#3b454c',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: '10%',
   },
   image: {
-    width: 375,
-    height: 249.8,
-
+    width: 300,
+    height: 300,
     marginBottom: 40, // There is no 'gap' property in React Native, using marginBottom instead
+  },
+  text: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: colorStyle.buttonColor,
+  },
+  highlightText: {
+    fontWeight: '900', // Make "in" slightly bolder
+    color:'white'
+    
   },
   logo: {
     fontWeight: 'bold',
@@ -109,16 +132,16 @@ const styles = StyleSheet.create({
   },
   customBtn: {
     // Custom styles for the button
-    backgroundColor: 'white',
+    backgroundColor: '#3b454c',
     marginTop: 20,
     borderWidth: 1,
-    borderColor: colorStyle.themeColor,
+    borderColor: colorStyle.buttonColor,
   },
   btnText1: {
     fontSize: 17,
   },
   btnText: {
-    color: colorStyle.themeColor,
+    color: colorStyle.buttonColor,
   },
   passwordContainer: {
     position: 'relative',
@@ -129,11 +152,12 @@ const styles = StyleSheet.create({
   forgotPasswordLink: {
     position: 'absolute',
     bottom: -20,
-    right: 40,
+    // right: 40,
+    left: 50,
     marginVertical: 20,
   },
   signupText: {
-    color: 'grey',
+    color: colorStyle.buttonColor,
     textDecorationLine: 'underline',
     fontSize: 12,
   },

@@ -19,7 +19,7 @@ const Onboarding = () => {
   const data = [
     {
       imageSource: require('../../assets/svg/ii.png'),
-      top: 180,
+      top: 200,
       left: 80,
       text1: 'Request',
       text2: 'Ride',
@@ -27,7 +27,7 @@ const Onboarding = () => {
     },
     {
       imageSource: require('../../assets/svg/Page.png'),
-      top: 180,
+      top: 200,
       left: 80,
       text1: 'Book',
       text2: 'Now',
@@ -35,7 +35,7 @@ const Onboarding = () => {
     },
     {
       imageSource: require('../../assets/svg/op.png'),
-      top: 180,
+      top: 270,
       left: 80,
       text1: 'Plan',
       text2: 'Ahead',
@@ -49,7 +49,16 @@ const Onboarding = () => {
       navigation.replace('Login')
     }
   };
-
+  const handleBack = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex - 1 + data.length) % data.length;
+      if (newIndex === 2) {
+        navigation.replace('Login');
+      }
+      return newIndex;
+    });
+  };
+  
   const currentData = data[currentIndex];
 
   return (
@@ -61,7 +70,14 @@ const Onboarding = () => {
       <View style={styles.svgContainer}>
         <SvgComponent />
       </View>
-
+    {currentIndex !==0 &&
+         <TouchableOpacity style={styles.button2} onPress={handleBack}>
+        <Image
+          source={require('../../assets/svg/back.png')}
+          style={styles.buttonImage}
+        />
+      </TouchableOpacity>
+    }
       <TouchableOpacity style={styles.button} onPress={handleNext}>
         <Image
           source={require('../../assets/svg/right.png')}
@@ -110,6 +126,26 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 10,
     elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button2: {
+    width: 80,
+    height: 80,
+    // backgroundColor: '#FFBC07',
+    borderRadius: 50,
+    position: 'absolute',
+    // bottom: 300,
+    top:40,
+    left: 5,
+    // shadowColor: 'rgba(0, 0, 2, 1.25)',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 0,
+    // },
+    // shadowOpacity: 1,
+    // shadowRadius: 10,
+    // elevation: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },

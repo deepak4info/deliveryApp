@@ -4,7 +4,7 @@ import colorStyle from '../style/colorStyle'
 
 const StatusBarComponent = ({barStyle , backgroundColor, }) => {
   return (
-   <StatusBar  barStyle={'dark-content'} backgroundColor={colorStyle.whiteColor} />
+   <StatusBar  barStyle={'dark-content'} backgroundColor={backgroundColor} />
   )
 }
 
